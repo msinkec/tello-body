@@ -1,0 +1,2 @@
+macelibrary/src/main/cpp/lib/arm64-v8a/libmace.a filter=lfs diff=lfs merge=lfs -text
+macelibrary/src/main/cpp/model/arm64-v8a/cpm.a filter=lfs diff=lfs merge=lfs -text

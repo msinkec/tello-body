@@ -25,16 +25,16 @@
          android:fitsSystemWindows. -->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:contentDescription="Video feed"
-            android:src="@drawable/ic_launcher_background"/>
+            android:orientation="horizontal"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher_background" />
 
         <LinearLayout
             android:id="@+id/fullscreen_content_controls"
@@ -54,6 +54,100 @@
                 android:layout_weight="1" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/data_collection_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/pose_button_1"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:backgroundTint="#FF5722"
+                android:text="1"
+                android:clickable="true" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/pose_button_2"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:backgroundTint="#FF5722"
+                android:text="2"
+                android:clickable="true" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/pose_button_3"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:backgroundTint="#FF5722"
+                android:text="3"
+                android:clickable="true" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/pose_button_4"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:backgroundTint="#FF5722"
+                android:text="4"
+                android:clickable="true" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/pose_button_5"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:backgroundTint="#FF5722"
+                android:text="5"
+                android:clickable="true" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/pose_button_6"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:backgroundTint="#FF5722"
+                android:text="6"
+                android:clickable="true" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/pose_button_7"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:backgroundTint="#FF5722"
+                android:text="7"
+                android:clickable="true" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/vertical_control_buttons"
+            style="?metaButtonBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/ascent_button"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:backgroundTint="#8BC34A"
+                android:clickable="true" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/descent_button"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:backgroundTint="#8BC34A"
+                android:clickable="true" />
+        </LinearLayout>
+
+
     </FrameLayout>
 
 </FrameLayout>

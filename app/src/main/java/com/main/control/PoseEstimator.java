@@ -11,7 +11,6 @@ import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
-import org.opencv.objdetect.HOGDescriptor;
 
 import java.io.File;
 import java.nio.FloatBuffer;
@@ -22,8 +21,6 @@ public class PoseEstimator {
     private int[] intValues;
     protected float[][] pointArray;
     private Mat mMat;
-
-    private HOGDescriptor hog;
 
     public PoseEstimator(Context context) {
         int lengthValues = 192 * 192 * 3;

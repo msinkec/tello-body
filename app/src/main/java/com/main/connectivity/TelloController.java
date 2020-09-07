@@ -70,26 +70,19 @@ public class TelloController {
     }
 
     public boolean isInAir() throws IOException {
-        //String resp = sendControlCommand("time?");
+        //String resp = sendControlCommand("time?", true);
         //return !resp.equals("0s");
-
         return inAir;
     }
 
-    public String takeoff() throws IOException {
-        String resp = sendControlCommand("takeoff", true);
-        if (resp.equals("ok")) {
-            inAir = true;
-        }
-        return resp;
+    public void takeoff() throws IOException {
+        String resp = sendControlCommand("takeoff", false);
+        inAir = true;
     }
 
-    public String land() throws IOException {
-        String resp = sendControlCommand("land", true);
-        if (resp.equals("ok")) {
-            inAir = false;
-        }
-        return resp;
+    public void land() throws IOException {
+        String resp = sendControlCommand("land", false);
+        inAir = false;
     }
 
     public String rotateCW(int degrees, boolean waitForResp) throws IOException {

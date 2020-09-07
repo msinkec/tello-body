@@ -48,7 +48,7 @@ public class PoseEstimator {
         result = JniMaceUtils.maceMobilenetCreateEngine(
                 ompNumThreads, cpuAffinityPolicy,
                 gpuPerfHint, gpuPriorityHint,
-                "cpm_v1", "CPU");
+                "cpm_v1", "GPU");
     }
 
     public void setBuffer(Bitmap img) {

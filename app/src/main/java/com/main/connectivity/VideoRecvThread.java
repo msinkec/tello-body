@@ -7,6 +7,8 @@ import android.media.MediaCodec;
 import android.media.MediaCodecInfo;
 import android.media.MediaFormat;
 import androidx.renderscript.*;
+
+import android.os.SystemClock;
 import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
@@ -62,6 +64,8 @@ public class VideoRecvThread extends Thread {
         int yRowStride= planes[0].getRowStride();
         int uvRowStride= planes[1].getRowStride();  // we know from   documentation that RowStride is the same for u and v.
         int uvPixelStride= planes[1].getPixelStride();  // we know from   documentation that PixelStride is the same for u and v.
+
+        Log.i("STRIDEE", String.valueOf(uvRowStride));
 
         // Y,U,V are defined as global allocations, the out-Allocation is the Bitmap.
         // Note also that uAlloc and vAlloc are 1-dimensional while yAlloc is 2-dimensional.
@@ -146,24 +150,31 @@ public class VideoRecvThread extends Thread {
             }
 
             if (dp.getLength() != 1460) {
-                /* Input for codec */
-                int inIndex = mediaCodec.dequeueInputBuffer(0);
-                if (inIndex >= 0) {
-                    ByteBuffer input = mediaCodec.getInputBuffer(inIndex);
-                    input.put(bs.toByteArray());
-                    mediaCodec.queueInputBuffer(inIndex, 0, bs.size(), 16, 0);
-                }
+                try {
+                    long startTime = SystemClock.uptimeMillis();
+                    /* Input for codec */
+                    int inIndex = mediaCodec.dequeueInputBuffer(0);
+                    if (inIndex >= 0) {
+                        ByteBuffer input = mediaCodec.getInputBuffer(inIndex);
+                        input.put(bs.toByteArray());
+                        mediaCodec.queueInputBuffer(inIndex, 0, bs.size(), 16, 0);
+                    }
 
-                /* Output from codec */
-                MediaCodec.BufferInfo bufferInfo = new MediaCodec.BufferInfo();
-                int outIndex = mediaCodec.dequeueOutputBuffer(bufferInfo, 0);
-                if(outIndex >= 0) {
-                    final Image output = mediaCodec.getOutputImage(outIndex);
-                    YUV_420_888_toRGB_out(output, TelloController.VIDEO_WIDTH, TelloController.VIDEO_HEIGHT);
-                    mediaCodec.releaseOutputBuffer(outIndex, false);
-                }
+                    /* Output from codec */
+                    MediaCodec.BufferInfo bufferInfo = new MediaCodec.BufferInfo();
+                    int outIndex = mediaCodec.dequeueOutputBuffer(bufferInfo, 0);
+                    if (outIndex >= 0) {
+                        final Image output = mediaCodec.getOutputImage(outIndex);
+                        YUV_420_888_toRGB_out(output, TelloController.VIDEO_WIDTH, TelloController.VIDEO_HEIGHT);
+                        mediaCodec.releaseOutputBuffer(outIndex, false);
+                    }
+                    long endTime = SystemClock.uptimeMillis();
+                    Log.d("TESTT", "TIME decode and stuff " + Long.toString(endTime - startTime));
 
-                bs.reset();
+                    bs.reset();
+                } catch (IllegalStateException e) {
+                    Log.e("tello", Log.getStackTraceString(e.getCause()));
+                }
             }
 
         }

@@ -1,2 +1,2 @@
 rootProject.name='tello-body'
-include ':app', ':macelibrary', ':OpenCVLibrary430'
+include ':app', ':macelibrary', ':OpenCVLibrary430', ':pytorch', ':pytorch-fbjni-140'

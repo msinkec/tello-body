@@ -1,5 +1,13 @@
 apply plugin: 'com.android.application'
 
+allprojects {
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -24,11 +32,18 @@ android {
         }
     }
 
+    packagingOptions {
+        pickFirst "**/libfbjni.so"
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+        pickFirst 'lib/x86/libc++_shared.so'
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
@@ -38,4 +53,8 @@ dependencies {
     implementation project(':macelibrary')
     implementation project(':OpenCVLibrary430')
     implementation 'com.google.android.material:material:1.0.0'
+
+    implementation project(':pytorch')
+    implementation project(':pytorch-fbjni-140')
+    implementation 'com.facebook.soloader:nativeloader:0.8.0'
 }

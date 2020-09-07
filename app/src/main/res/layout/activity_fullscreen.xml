@@ -56,6 +56,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="invisible"
             android:id="@+id/data_collection_controls"
             style="?metaButtonBarStyle"
             android:layout_width="wrap_content"

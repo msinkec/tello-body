@@ -6,8 +6,8 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->/home/miha/School/FRI/Letnik3/Diplomska/tello-sport/OpenCVLibrary430/java/AndroidManifest.xml
+8-->/home/miha/School/FRI/Letnik3/Diplomska/tello-body/OpenCVLibrary430/java/AndroidManifest.xml
 9        android:targetSdkVersion="26" />
-9-->/home/miha/School/FRI/Letnik3/Diplomska/tello-sport/OpenCVLibrary430/java/AndroidManifest.xml
+9-->/home/miha/School/FRI/Letnik3/Diplomska/tello-body/OpenCVLibrary430/java/AndroidManifest.xml
 10
 11</manifest>

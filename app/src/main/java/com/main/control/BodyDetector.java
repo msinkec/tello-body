@@ -34,6 +34,7 @@ public class BodyDetector {
     }
 
     public boolean containsBody(Bitmap bitmap) {
+        // TODO: wtf is this conversion
         // Convert Bitmap to Mat
         Bitmap bmp32 = bitmap.copy(Bitmap.Config.ARGB_8888, true);
         //Utils.bitmapToMat(bmp32, mMat);
